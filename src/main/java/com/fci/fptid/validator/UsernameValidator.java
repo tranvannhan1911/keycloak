@@ -4,6 +4,13 @@ import java.util.regex.Pattern;
 
 import org.keycloak.services.validation.Validation;
 
+import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
+
 public class UsernameValidator extends Validation{
-	private static final Pattern USERNAME_PATTERN = Pattern.compile("^(?=.{6,32}$)(?![0-9_\\-.])[a-zA-Z0-9_\\-.]+$");
+	public static final Pattern USERNAME_PATTERN = Pattern.compile("^[a-zA-Z0-9]+$");
+	
+
+    public static boolean isUsernameValid(String username) {
+        return USERNAME_PATTERN.matcher(username).matches();
+    }
 }

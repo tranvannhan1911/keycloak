@@ -2,6 +2,7 @@ package com.fci.fptid.authentication.registration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -54,6 +55,7 @@ public class RegistrationValidateUsernameFormAction implements FormAction{
             errors.add(new FormMessage(RegistrationPage.FIELD_USERNAME, "Username không được bỏ trống"));
         }
         
+        System.out.println(!UsernameValidator.isUsernameValid(formData.getFirst((RegistrationPage.FIELD_USERNAME))));
         if (!UsernameValidator.isUsernameValid(formData.getFirst((RegistrationPage.FIELD_USERNAME)))) {
             errors.add(new FormMessage(RegistrationPage.FIELD_USERNAME, "Username không hợp lệ"));
         }
